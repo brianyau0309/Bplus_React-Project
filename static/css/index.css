@@ -1,0 +1,495 @@
+@import url('http://fonts.googleapis.com/css?family=Oleo+Script');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: whitesmoke;
+    font-size: 22px;
+    font-family: 'Oleo Script'
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6%;
+    font: 200 25px/1.3 'Oleo Script', Helvetica, sans-serif;
+    color: #2b2b2b;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.1);               
+    background: #E0E0E0;
+    text-align: center;
+}
+header > a {
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    top: 8%;
+}
+nav {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center; 
+    z-index: 1;
+    background-color: #E0E0E0;
+    margin: 0 auto;
+    height: 9%;                                     
+}
+
+nav > ul > a {
+    text-decoration: none;
+    margin: 0 16.5px;
+}
+nav li {
+    list-style: none;
+    display: inline-block;
+}
+
+nav > ul > a > li > img {
+    height: 40px;
+    width: 40px;
+}
+
+nav #itemExpand {
+    margin: 0 10px;
+}
+
+nav > ul > #itemExpand > img {
+    width: 50px;
+    height: 50px;
+}
+
+nav .name {
+    display: none;
+}
+
+main {
+    position: fixed;
+    top: 6%;
+    width: 100%;
+    height: 88.5%;
+    overflow: scroll;
+    -ms-overflow-style: none; 
+    overflow: -moz-scrollbars-none;
+}
+main::-webkit-scrollbar { width: 0 !important  }
+
+/* Counter Page */
+counter {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-family: 'Oleo Script';
+    color: whitesmoke;
+    overflow: hidden;
+    background: linear-gradient(gray,#E0E0E0);
+    display: grid;
+    grid-template-columns: 100% 100%;
+    grid-template-rows: 5% 10% 20% 1fr;
+    grid-template-areas:
+    'counter_title counter_title'
+    'counter_name counter_edit'
+    'counter_num counter_edit'
+    'counter_details counter_edit';
+
+    /* no selection */
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+}
+#pngCounter {
+    display: none;
+}
+counter_title {
+    grid-area: counter_title;
+    font-size: 23px;
+    color: #2b2b2b;
+    padding: 5px;
+    padding-bottom: 0px;
+    text-align: left;
+    transition: transform .5s;
+}
+counter_name {
+    grid-area: counter_name;
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    margin-top: 3.5%;
+    transition: transform .5s;
+}
+counter_num {
+    grid-area: counter_num;
+    width: 100%;
+    height: 100%;
+    font-size: 80px;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.1);               
+    letter-spacing: 45px;
+    padding-left: 18px;
+    transition: transform .5s;
+}
+counter_details {
+    grid-area: counter_details;
+    transition: transform .5s;
+}
+counter_details li {
+    list-style: none;
+    display: block;
+    text-decoration: none;
+}
+counter_id, counter_date {
+    display: block;
+    font-size: 14px;
+}
+counter_details #plus, counter_details #minus, 
+counter_details #reset, counter_details #edit {
+    margin: 20px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+}
+counter_details #edit {
+    margin: 0;
+}
+#editBackLabel {
+    display: none;
+    font-size: 35px;
+    position: fixed;
+    top: 7%;
+    left: -10%;
+    opacity: 0;
+    transition: .1s ease .5s; 
+    -webkit-transition: opacity .1s ease .5s; /* Safari and Chrome */
+    cursor: pointer;
+}
+#editToggleLabel {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin: 20px;
+    margin-bottom: 5px;
+}
+#editToggle {
+    position: absolute;
+    z-index: -1;
+}
+#editToggle:checked ~ counter_edit,
+#editToggle:checked ~ counter_title,
+#editToggle:checked ~ counter_name,
+#editToggle:checked ~ counter_num,
+#editToggle:checked ~ counter_details,
+#editToggle:checked ~ counter_side {
+    transform: translateX(-100%);
+}
+#editToggle:checked ~ #editBackLabel {
+    display: block;
+    opacity: 1;
+    transform: translateX(100%);
+}
+#sideToggle {
+    position: absolute;
+    z-index: -1;
+}
+#sideToggleLabel {
+    cursor: pointer;
+}
+counter_side {
+    display: block;
+    position: fixed;
+    top: 13%;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background: linear-gradient(#868686, #E0E0E0);
+    width: 0%;
+    height: 78.5%;
+    transition: .5s;
+}
+counter_side > * {
+    white-space: nowrap;
+    opacity: 0;
+}
+counter_side > h2 {
+    padding-top: 15px;
+    text-align: left;
+    padding-left: 10px;
+}
+counter_side > form{
+    width: 100%;
+    height: 25px;
+    margin-left: 3%;
+    text-align: left;
+}
+counter_side #addBox {
+    width: 70%;
+    height: 100%;
+    background: rgb(0,0,0,0);
+    border: 1px solid gray;
+    color: white;
+    vertical-align: middle;
+    font-family: "Arial";
+}
+counter_side button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+counter_side #addBox::placeholder {
+    color: rgba(256,256,256, 0.5);
+    font-family: "Oleo Script";
+}
+counter_side #addBox:focus {
+    outline: 3px solid lightgray;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.2);
+}
+counter_side #add {
+    width: 25px;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+counter_side #add:active {
+    opacity: 0.4;
+}
+#sideToggle:checked ~ counter_side {
+    width: 100%;
+}
+#sideToggle:checked ~ counter_side > * {
+    opacity: 1;
+}
+.counter_list {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+}
+.counter_list a {
+    width: 100%;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+}
+.counter_list > a > tr {
+    font-size: 120%;
+    cursor: pointer;
+}
+.counter_list > a  > tr:hover,
+.counter_list > a:hover {  
+    background-color: lightgray;
+}
+.counter_list > a > tr:active, 
+.counter_list > a:active{
+    background-color: #808080;
+}
+counter_edit {
+    grid-area: counter_edit;
+    width: 100%;
+    height: 100%;
+    transition: transform .5s;
+    margin-top: 4%;
+}
+counter_edit > h2 {
+    padding-top: 10px;
+}
+counter_edit img {
+    cursor: pointer;
+} 
+counter_edit input {
+    width: 100%;
+    height: 100%;
+    background: rgb(0,0,0,0);
+    border: 1px solid gray;
+    color: white;
+    vertical-align: middle;
+    font-family: "Arial";
+    font-size: 1.3em;
+}
+counter_edit button {
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    margin-top: 50px;
+}
+counter_edit .editButton {
+    width: 45px;
+    height: 45px;
+    margin: 0 10px;
+}
+counter_edit input::placeholder {
+    color: rgba(256,256,256, 0.5);
+    font-family: "Oleo Script";
+}
+counter_edit input:focus {
+    outline: 3px solid lightgray;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.2);
+}
+counter_edit table {
+    width: 80%;
+    margin: auto;
+    margin-top: 5%;
+    border-collapse:separate; 
+    border-spacing: 0 1em;
+}
+counter_edit tr {
+    width: 100%;
+}
+counter_edit .editTitle {
+    font-size: 1.3em;
+    text-align: right;
+}
+counter_edit .editInput {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+@media only screen and (min-width: 780px) {
+    body {
+        font-size: 18px;
+    }
+    header {
+        padding: 0;
+        margin: 0;
+        height: 5%;
+        width: 10%;
+        font-size: 30px;    
+        z-index: 2;
+    }
+    nav {
+        text-align: left;
+        padding: 0;
+        margin: 0;
+        height: 5%;
+        width: 90%;
+        top: 0;
+        left: 10%;
+    }
+    nav .name {
+        display: inline-block;
+        color: black;
+    }
+    nav ul {
+        height: 100%;
+    }
+    nav li {
+        height: 80%;
+        padding-top: 8px;
+        padding-bottom: 1px;
+    }
+    nav > ul > #itemExpand {
+        display: none;
+    }
+    nav > ul > a {
+        margin: 0 5px;
+    }
+    nav > ul > a > li:hover {
+        background: #C0C0C0;
+    }
+    nav > ul > a > li > img {
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+    }
+    main {
+        top: 5%;
+        height: 100%;
+    }
+    
+    /* Counter  */
+    counter {
+        width: 100%;
+        grid-template-columns: 30% 70% 30%;
+        grid-template-areas: 
+        'counter_title counter_title counter_title'
+        'counter_side counter_name counter_edit'
+        'counter_side counter_num counter_edit'
+        'counter_side counter_details counter_edit';
+    }
+    counter_title {
+        font-size: 25px;
+        z-index: 1;
+    }
+    #pngCounter {
+        display: inline;
+        vertical-align: middle;
+        width: 45px;
+        height: 45px;
+    }
+    #sideToggleLabel {
+        display: none;
+    }
+    counter_side {
+        grid-area: counter_side;
+        transition: 0s;
+        position: unset;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        -ms-overflow-style: none; 
+        overflow: -moz-scrollbars-none;
+        transition: transform 0.5s;
+    }
+    counter_side::-webkit-scrollbar { width: 0 !important  }
+    counter_side > h1 {
+        padding-top: 10px;
+    }
+    counter_side > * {
+        transition: 0s;
+        opacity: 1;
+    }
+    counter_details > ul {
+        margin-top: 80px;
+    }
+    counter_details > ul > li {
+        display: inline-block;
+    }
+    counter #plus:hover,
+    counter #minus:hover,
+    counter #reset:hover,
+    counter #edit:hover,
+    counter_edit img:hover {
+        opacity: 0.6;
+    }
+    counter #plus:active,
+    counter #minus:active,
+    counter #reset:active,
+    counter #edit:active,
+    counter_edit img:active {
+        opacity: 0.3;
+    }
+    #editToggle:checked ~ counter_details #edit {
+        opacity: 0.3;
+    }
+    #editToggle:checked ~ counter_edit,
+    #editToggle:checked ~ counter_side {
+        transform: translateX(-150%);
+    }
+    #editToggle:checked ~ counter_title,
+    #editToggle:checked ~ counter_name,
+    #editToggle:checked ~ counter_num,
+    #editToggle:checked ~ counter_details {
+        transform: translateX(-43%);
+    }
+    #editToggle:checked ~ #editBackLabel {
+        display: none;
+    }
+}
