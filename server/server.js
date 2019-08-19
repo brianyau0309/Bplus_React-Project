@@ -4,6 +4,9 @@
 // Tools
 const bodyParser = require('body-parser');
 const path = require('path');
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
 
 // Express setup
 const express = require('express');
@@ -120,9 +123,14 @@ app.get('*', (req, res) => {
 MongoClient.connect('mongodb://localhost', { useNewUrlParser: true })
 .then(connection => {
     db = connection.db('bplus'); // select database
-    app.listen(5000, () => {
-        console.log('App started on Port 5000');
-    })
+
+    var privateKey  = fs.readFileSync(__dirname + '/ssl/private.key');
+    var certificate = fs.readFileSync(__dirname + '/ssl/certificate.crt');
+    var credentials = { key: privateKey, cert: certificate };
+
+    var httpsServer = https.createServer(credentials, app)
+    httpsServer.listen(443);
+
 }).catch(err => {
     console.log('Error: ', err);
 })

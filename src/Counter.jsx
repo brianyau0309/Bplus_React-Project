@@ -2,7 +2,7 @@ import React from 'react'
 import 'whatwg-fetch'
 import { Link, withRouter } from 'react-router-dom'
 
-const $ = (qs) => {let a = document.querySelectorAll(qs);if (a.length > 1) { return a } else { return a[0] }}
+const $ = (qs) => { let a = document.querySelectorAll(qs);if (a.length > 1) { return a } else { return a[0] }}
 function CounterList (props) {
     const citem = props.counterData.map(ctr => (
         <CounterItem key={ctr._id} counter={ctr} />
@@ -17,12 +17,12 @@ function CounterItem (props) {
         width: '10%'
     }
     return (
-        <Link to={`/counter/${props.counter._id}`}>
+        <Link to={`/counter/${props.counter._id}`}> {/*`*/}
             <tr>
                 <td style={tdWidth}>
                     &nbsp;&nbsp;
                     &nbsp;&nbsp;
-                    <span id={`mark${props.counter._id}`}></span>
+                    <span id={`mark${props.counter._id}`}></span> {/*`*/}
                     &nbsp;&nbsp;
                 </td>
                 <td>{props.counter.title}</td>
@@ -30,7 +30,7 @@ function CounterItem (props) {
         </Link>
     )
 }
-//`
+
 
 class Counter extends React.Component {
     constructor (props) {
@@ -54,6 +54,7 @@ class Counter extends React.Component {
     componentDidMount() {
         this.loadData()
     }
+
     componentDidUpdate(prevProps) {
         if (prevProps.match.params !== this.props.match.params) {
             this.renderCounter(this.props.match.params.id)
@@ -70,10 +71,11 @@ class Counter extends React.Component {
                     counter.number = '0'.repeat(4-counter.number.length) + counter.number
                 })
                 this.setState({ 'counterData': data, })
-                if (this.props.match.params.id == "undefined")
+                if (this.props.match.params.id == undefined) {
                     this.props.history.push('/counter/' + this.state.counterData[0]._id)
-                else
+                } else {
                     this.props.history.push('/counter/' + this.props.match.params.id)
+                }
             })
         })
     }
@@ -186,10 +188,19 @@ class Counter extends React.Component {
             fetch(`/api/counter/${this.props.match.params.id}`, {
                 method: 'DELETE'
             }).then(res => {
-                if (!res.ok)
+                if (!res.ok) {
                     alert("Error: Fail to delete counter")
-                else 
-                    this.loadData()
+                } else { 
+                    let newCounterData = this.state.counterData.filter(counter => {
+                        if (counter._id === this.props.match.params.id)
+                            return false
+                        else
+                            return true
+                    })
+                    this.props.history.push('/counter/' + this.state.counterData[0]._id)
+                    this.setState({ 'counterData': newCounterData })
+                    $('#editToggle').checked = false
+                }
             })
         }
     }

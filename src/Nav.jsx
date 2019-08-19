@@ -12,13 +12,13 @@ export default class Nav extends React.Component {
         return (
         <nav>
              <ul>
-                 <NavLink to="/cloud">
+                 <NavLink to="/counter">
                     <li>
                         <img alt="Cloud" src={pngCloud} />
                         <span className="name">&nbsp;Clould&nbsp;</span> 
                     </li>
                  </NavLink>
-                 <NavLink to="/calendar">
+                 <NavLink to="/Notification">
                     <li>
                         <img alt="Calendar" src={pngCalendar} />
                         <span className="name">&nbsp;Calendar&nbsp;</span> 

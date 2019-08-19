@@ -1,33 +1,52 @@
-@import url('http://fonts.googleapis.com/css?family=Oleo+Script');
-
+/* latin-ext */
+@font-face {
+  font-family: 'Oleo Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oleo Script'), local('OleoScript-Regular'), url(https://fonts.gstatic.com/s/oleoscript/v8/rax5HieDvtMOe0iICsUccChTu0_g8A.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Oleo Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oleo Script'), local('OleoScript-Regular'), url(https://fonts.gstatic.com/s/oleoscript/v8/rax5HieDvtMOe0iICsUccChdu08.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* CSS varibales */
+:root {
+    --txt-black: #2b2b2b;
+    --txt-white: whitesmoke;
+    --bg-white: whitesmoke;
+    --bg-gray: #E0E0E0;
+}
+/* Base */
 * {
     margin: 0;
     padding: 0;
 }
-
 body {
-    background: whitesmoke;
-    font-size: 22px;
+    background: var(-bg-white);
+    font-size: 6vw;
     font-family: 'Oleo Script'
 }
-
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 6%;
-    font: 200 25px/1.3 'Oleo Script', Helvetica, sans-serif;
-    color: #2b2b2b;
+    height: 10vw;
+    font: 200 8vw/1.3 'Oleo Script', Helvetica, sans-serif;
+    color: var(--txt-black);
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);               
-    background: #E0E0E0;
+    background: var(--bg-gray);
     text-align: center;
 }
 header > a {
     text-decoration: none;
     cursor: pointer;
-    position: relative;
-    top: 8%;
+    top: 5%;
 }
 nav {
     position: fixed;
@@ -36,14 +55,19 @@ nav {
     width: 100%;
     text-align: center; 
     z-index: 1;
-    background-color: #E0E0E0;
+    background-color: var(--bg-gray);
     margin: 0 auto;
-    height: 9%;                                     
+    height: 14vw;                                     
 }
 
 nav > ul > a {
     text-decoration: none;
-    margin: 0 16.5px;
+    margin: 0 5vw;
+}
+nav > ul > a.active {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
 }
 nav li {
     list-style: none;
@@ -51,17 +75,17 @@ nav li {
 }
 
 nav > ul > a > li > img {
-    height: 40px;
-    width: 40px;
+    height: 10vw;
+    width: 10vw;
 }
 
 nav #itemExpand {
-    margin: 0 10px;
+    margin: 0 3vw;
 }
 
 nav > ul > #itemExpand > img {
-    width: 50px;
-    height: 50px;
+    width: 13vw;
+    height: 13vw;
 }
 
 nav .name {
@@ -70,24 +94,32 @@ nav .name {
 
 main {
     position: fixed;
-    top: 6%;
+    top: 10vw;
     width: 100%;
     height: 88.5%;
     overflow: scroll;
     -ms-overflow-style: none; 
     overflow: -moz-scrollbars-none;
+
+    /* no selection */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 main::-webkit-scrollbar { width: 0 !important  }
+/* Base End */
 
-/* Counter Page */
+/* Counter */
 counter {
     width: 100%;
     height: 100%;
     text-align: center;
-    font-family: 'Oleo Script';
-    color: whitesmoke;
+    color: var(--txt-white);
     overflow: hidden;
-    background: linear-gradient(gray,#E0E0E0);
+    background: linear-gradient(gray,var(--bg-gray));
     display: grid;
     grid-template-columns: 100% 100%;
     grid-template-rows: 5% 10% 20% 1fr;
@@ -96,22 +128,14 @@ counter {
     'counter_name counter_edit'
     'counter_num counter_edit'
     'counter_details counter_edit';
-
-    /* no selection */
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
 }
-#pngCounter {
+counter #pngCounter {
     display: none;
 }
 counter_title {
     grid-area: counter_title;
-    font-size: 23px;
-    color: #2b2b2b;
+    font-size: 6vw;
+    color: var(--txt-black);
     padding: 5px;
     padding-bottom: 0px;
     text-align: left;
@@ -121,7 +145,7 @@ counter_name {
     grid-area: counter_name;
     width: 100%;
     height: 100%;
-    font-size: 30px;
+    font-size: 10vw;
     margin-top: 3.5%;
     transition: transform .5s;
 }
@@ -129,10 +153,10 @@ counter_num {
     grid-area: counter_num;
     width: 100%;
     height: 100%;
-    font-size: 80px;
+    font-size: 23vw;
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);               
-    letter-spacing: 45px;
-    padding-left: 18px;
+    letter-spacing: 12vw;
+    padding-left: 5vw;
     transition: transform .5s;
 }
 counter_details {
@@ -146,22 +170,22 @@ counter_details li {
 }
 counter_id, counter_date {
     display: block;
-    font-size: 14px;
+    font-size: 4vw;
 }
 counter_details #plus, counter_details #minus, 
 counter_details #reset, counter_details #edit {
-    margin: 20px;
-    margin-bottom: 5px;
+    margin: 5vw;
+    margin-bottom: 1vw;
     cursor: pointer;
-    width: 80px;
-    height: 80px;
+    width: 20vw;
+    height: 20vw;
 }
 counter_details #edit {
     margin: 0;
 }
-#editBackLabel {
+counter #editBackLabel {
     display: none;
-    font-size: 35px;
+    font-size: 9vw;
     position: fixed;
     top: 7%;
     left: -10%;
@@ -170,47 +194,47 @@ counter_details #edit {
     -webkit-transition: opacity .1s ease .5s; /* Safari and Chrome */
     cursor: pointer;
 }
-#editToggleLabel {
+counter #editToggleLabel {
     display: inline-block;
-    width: 80px;
-    height: 80px;
-    margin: 20px;
-    margin-bottom: 5px;
+    width: 20vw;
+    height: 20vw;
+    margin: 5vw;
+    margin-bottom: 1vw;
 }
-#editToggle {
+counter #editToggle {
     position: absolute;
     z-index: -1;
 }
-#editToggle:checked ~ counter_edit,
-#editToggle:checked ~ counter_title,
-#editToggle:checked ~ counter_name,
-#editToggle:checked ~ counter_num,
-#editToggle:checked ~ counter_details,
-#editToggle:checked ~ counter_side {
+counter #editToggle:checked ~ counter_edit,
+counter #editToggle:checked ~ counter_title,
+counter #editToggle:checked ~ counter_name,
+counter #editToggle:checked ~ counter_num,
+counter #editToggle:checked ~ counter_details,
+counter #editToggle:checked ~ counter_side {
     transform: translateX(-100%);
 }
-#editToggle:checked ~ #editBackLabel {
+counter #editToggle:checked ~ #editBackLabel {
     display: block;
     opacity: 1;
     transform: translateX(100%);
 }
-#sideToggle {
+counter #sideToggle {
     position: absolute;
     z-index: -1;
 }
-#sideToggleLabel {
+counter #sideToggleLabel {
     cursor: pointer;
 }
 counter_side {
     display: block;
     position: fixed;
-    top: 13%;
+    top: 13vh;
     left: 0;
     overflow-x: hidden;
     overflow-y: scroll;
-    background: linear-gradient(#868686, #E0E0E0);
+    background: linear-gradient(#868686, var(--bg-gray));
     width: 0%;
-    height: 78.5%;
+    height: 78%;
     transition: .5s;
 }
 counter_side > * {
@@ -218,13 +242,13 @@ counter_side > * {
     opacity: 0;
 }
 counter_side > h2 {
-    padding-top: 15px;
+    padding-top: 1vh;
     text-align: left;
-    padding-left: 10px;
+    padding-left: 3vw;
 }
 counter_side > form{
     width: 100%;
-    height: 25px;
+    height: 5vh;
     margin-left: 3%;
     text-align: left;
 }
@@ -236,6 +260,7 @@ counter_side #addBox {
     color: white;
     vertical-align: middle;
     font-family: "Arial";
+    font-size: 5vw;
 }
 counter_side button {
     background: none;
@@ -255,43 +280,42 @@ counter_side #addBox:focus {
     box-shadow: 3px 3px rgba(0, 0, 0, 0.2);
 }
 counter_side #add {
-    width: 25px;
+    width: 8vw;
     cursor: pointer;
-    margin-right: 20px;
     margin-left: 10px;
     vertical-align: middle;
 }
 counter_side #add:active {
     opacity: 0.4;
 }
-#sideToggle:checked ~ counter_side {
+counter #sideToggle:checked ~ counter_side {
     width: 100%;
 }
-#sideToggle:checked ~ counter_side > * {
+counter #sideToggle:checked ~ counter_side > * {
     opacity: 1;
 }
-.counter_list {
+counter .counter_list {
     border-collapse: collapse;
     width: 100%;
     text-align: left;
     margin-top: 10px;
 }
-.counter_list a {
+counter .counter_list a {
     width: 100%;
     text-decoration: none;
     display: block;
     color: inherit;
 }
-.counter_list > a > tr {
+counter .counter_list > a > tr {
     font-size: 120%;
     cursor: pointer;
 }
-.counter_list > a  > tr:hover,
-.counter_list > a:hover {  
+counter .counter_list > a  > tr:hover,
+counter .counter_list > a:hover {  
     background-color: lightgray;
 }
-.counter_list > a > tr:active, 
-.counter_list > a:active{
+counter .counter_list > a > tr:active, 
+counter .counter_list > a:active{
     background-color: #808080;
 }
 counter_edit {
@@ -302,10 +326,12 @@ counter_edit {
     margin-top: 4%;
 }
 counter_edit > h2 {
-    padding-top: 10px;
+    padding-top: 1vh;
 }
 counter_edit img {
     cursor: pointer;
+    width: 13vw;
+    height: 13vw;
 } 
 counter_edit input {
     width: 100%;
@@ -324,15 +350,15 @@ counter_edit button {
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    width: 50px;
-    height: 50px;
-    margin: 0 10px;
-    margin-top: 50px;
+    width: 13vw;
+    height: 13vw;
+    margin: 0 3vw;
+    margin-top: 5vh;
 }
 counter_edit .editButton {
-    width: 45px;
-    height: 45px;
-    margin: 0 10px;
+    width: 13vw;
+    height: 13vw;
+    margin: 0 3vw;
 }
 counter_edit input::placeholder {
     color: rgba(256,256,256, 0.5);
@@ -353,7 +379,7 @@ counter_edit tr {
     width: 100%;
 }
 counter_edit .editTitle {
-    font-size: 1.3em;
+    font-size: 7vw;
     text-align: right;
 }
 counter_edit .editInput {
@@ -361,6 +387,85 @@ counter_edit .editInput {
     height: 100%;
     text-align: center;
 }
+/* Counter End */
+
+/* Memo */
+memo {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: linear-gradient(gray,var(--bg-gray));
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 5% 1fr;
+    grid-template-areas:
+    'memo_header'
+    'memo_content'
+    'memo_side';
+}
+memo_header {
+    grid-area: memo_header;
+    font-size: 6vw;
+    color: var(--txt-black);
+    padding: 5px;
+    padding-bottom: 0px;
+    text-align: left;
+    transition: transform .5s;
+}
+memo #pngMemo {
+    display: none;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+}
+memo_content {
+    grid-area: memo_content;
+    padding-top: 8px;
+    width: 100%;
+    height: 100%
+}
+memo_content form {
+    width: 100%;
+    height: 100%;
+}
+memo_content #memoTags {
+    width: 90%;
+}
+memo_content #memoText {
+    width: 90%;
+    height: 60%;
+}
+memo_side {
+    display: block;
+    position: fixed;
+    top: 12%;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background: linear-gradient(#868686, var(--bg-gray));
+    width: 0%;
+    height: 78.5%;
+    transition: .5s;
+}
+memo_side > * {
+    white-space: nowrap;
+    opacity: 0;
+}
+memo #sideToggle {
+    position: absolute;
+    z-index: -1;
+}
+memo #sideToggle:checked ~ memo_side {
+    width: 100%;
+}
+memo #sideToggle:checked ~ memo_side > * {
+    opacity: 1;
+}
+memo #sideToggleLabel {
+    cursor: pointer;
+}
+/* Memo End */
 
 @media only screen and (min-width: 780px) {
     body {
@@ -369,16 +474,16 @@ counter_edit .editInput {
     header {
         padding: 0;
         margin: 0;
-        height: 5%;
+        height: 3.6vw;
         width: 10%;
-        font-size: 30px;    
+        font-size: 3vw;    
         z-index: 2;
     }
     nav {
         text-align: left;
         padding: 0;
         margin: 0;
-        height: 5%;
+        height: 3.6vw;
         width: 90%;
         top: 0;
         left: 10%;
@@ -386,14 +491,14 @@ counter_edit .editInput {
     nav .name {
         display: inline-block;
         color: black;
+        font-size: 1.5vw;
     }
     nav ul {
         height: 100%;
     }
     nav li {
         height: 80%;
-        padding-top: 8px;
-        padding-bottom: 1px;
+        padding-top: 1vw;
     }
     nav > ul > #itemExpand {
         display: none;
@@ -402,19 +507,22 @@ counter_edit .editInput {
         margin: 0 5px;
     }
     nav > ul > a > li:hover {
-        background: #C0C0C0;
+        opacity: 0.6;
+    }
+    nav > ul > a > li:active {
+        opacity: 0.3;
     }
     nav > ul > a > li > img {
-        width: 30px;
-        height: 30px;
+        width: 2vw;
+        height: 2vw;
         vertical-align: middle;
     }
     main {
-        top: 5%;
+        top: 3.6vw;
         height: 100%;
     }
     
-    /* Counter  */
+    /* Counter */
     counter {
         width: 100%;
         grid-template-columns: 30% 70% 30%;
@@ -425,17 +533,26 @@ counter_edit .editInput {
         'counter_side counter_details counter_edit';
     }
     counter_title {
-        font-size: 25px;
+        font-size: 3vh;
         z-index: 1;
     }
-    #pngCounter {
+    counter #pngCounter {
         display: inline;
         vertical-align: middle;
-        width: 45px;
-        height: 45px;
+        width: 4vh;
+        height: 4vh;
     }
-    #sideToggleLabel {
+    counter #sideToggleLabel {
         display: none;
+    }
+    counter_name {
+        font-size: 4vw;
+        margin: 0;
+    }
+    counter_num {
+        font-size: 11vw;
+        letter-spacing: 5vw;
+        padding-left: 2vw;
     }
     counter_side {
         grid-area: counter_side;
@@ -449,18 +566,62 @@ counter_edit .editInput {
         transition: transform 0.5s;
     }
     counter_side::-webkit-scrollbar { width: 0 !important  }
-    counter_side > h1 {
+    counter_side > h2 {
         padding-top: 10px;
+        padding-left: 1vw;
     }
     counter_side > * {
         transition: 0s;
         opacity: 1;
     }
-    counter_details > ul {
-        margin-top: 80px;
+    counter_side #add {
+        width: 3vw;
+    }
+    counter_side #addBox {
+        font-size: 2vw;
+    }
+    counter_details #plus, 
+    counter_details #minus, 
+    counter_details #reset, 
+    counter_details #edit {
+        margin: 1vw;
+        width: 10vw;
+        height: 10vw;
+    }
+    counter #editToggleLabel {
+        width: 10vw;
+        height: 10vw;
+        margin: 0;
+    }
+    counter_details {
+        padding-top: 3vw;
+    }
+    counter_id, counter_date {
+        font-size: 1.5vw;
     }
     counter_details > ul > li {
         display: inline-block;
+    }
+    counter_edit h2 {
+        padding: 0;
+        font-size: 3vw
+    }
+    counter_edit .editTitle {
+        font-size: 3vw;
+    }
+    counter_edit button {
+        width: 7vw;
+        height: 7vw;
+        margin: 0 1vw;
+    }
+    counter_edit img {
+        width: 7vw;
+        height: 7vw;
+    }
+    counter_edit .editButton {
+        width: 7vw;
+        height: 7vw;
+        margin: 0 1vw;
     }
     counter #plus:hover,
     counter #minus:hover,
@@ -476,20 +637,30 @@ counter_edit .editInput {
     counter_edit img:active {
         opacity: 0.3;
     }
-    #editToggle:checked ~ counter_details #edit {
+    counter #editToggle:checked ~ counter_details #edit {
         opacity: 0.3;
     }
-    #editToggle:checked ~ counter_edit,
-    #editToggle:checked ~ counter_side {
-        transform: translateX(-150%);
+    counter #editToggle:checked ~ counter_edit,
+    counter #editToggle:checked ~ counter_side {
+        transform: translateX(-120%);
     }
-    #editToggle:checked ~ counter_title,
-    #editToggle:checked ~ counter_name,
-    #editToggle:checked ~ counter_num,
-    #editToggle:checked ~ counter_details {
+    counter #editToggle:checked ~ counter_title,
+    counter #editToggle:checked ~ counter_name,
+    counter #editToggle:checked ~ counter_num,
+    counter #editToggle:checked ~ counter_details {
         transform: translateX(-43%);
     }
-    #editToggle:checked ~ #editBackLabel {
+    counter #editToggle:checked ~ #editBackLabel {
         display: none;
     }
+    /* Counter End */
+
+    /* Memo */
+    memo #pngMemo {
+        display: inline;
+    }
+    memo #sideToggleLabel {
+        display: none;
+    }
+    /* Memo End */
 }
