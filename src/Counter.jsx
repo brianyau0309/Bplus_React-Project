@@ -144,7 +144,6 @@ class Counter extends React.Component {
         if (typeof input.title != "undefined")
             data['title'] = input.title
 
-            console.log(data)
             fetch(`/api/counter/${this.props.match.params.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },

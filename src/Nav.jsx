@@ -18,7 +18,7 @@ export default class Nav extends React.Component {
                         <span className="name">&nbsp;Clould&nbsp;</span> 
                     </li>
                  </NavLink>
-                 <NavLink to="/Notification">
+                 <NavLink to="/calendar">
                     <li>
                         <img alt="Calendar" src={pngCalendar} />
                         <span className="name">&nbsp;Calendar&nbsp;</span> 

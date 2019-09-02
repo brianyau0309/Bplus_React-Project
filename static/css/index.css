@@ -29,15 +29,19 @@
 body {
     background: var(-bg-white);
     font-size: 6vw;
-    font-family: 'Oleo Script'
+    font-family: 'Oleo Script';
+}
+#content > div {
+  width: 100%;
+  height: 100vh;
 }
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 10vw;
-    font: 200 8vw/1.3 'Oleo Script', Helvetica, sans-serif;
+    height: 5%;
+    font: 200 6vw/1.3 'Oleo Script', Helvetica, sans-serif;
     color: var(--txt-black);
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);               
     background: var(--bg-gray);
@@ -57,12 +61,11 @@ nav {
     z-index: 1;
     background-color: var(--bg-gray);
     margin: 0 auto;
-    height: 14vw;                                     
+    height: 7%;                                     
 }
-
 nav > ul > a {
     text-decoration: none;
-    margin: 0 5vw;
+    margin: 0 6vw;
 }
 nav > ul > a.active {
     pointer-events: none;
@@ -75,17 +78,17 @@ nav li {
 }
 
 nav > ul > a > li > img {
-    height: 10vw;
-    width: 10vw;
+    height: 8vw;
+    width: 8vw;
 }
 
 nav #itemExpand {
-    margin: 0 3vw;
+    margin: 0 5vw;
 }
 
 nav > ul > #itemExpand > img {
-    width: 13vw;
-    height: 13vw;
+    width: 10vw;
+    height: 10vw;
 }
 
 nav .name {
@@ -94,9 +97,9 @@ nav .name {
 
 main {
     position: fixed;
-    top: 10vw;
+    top: 5%;
     width: 100%;
-    height: 88.5%;
+    height: 88.2%;
     overflow: scroll;
     -ms-overflow-style: none; 
     overflow: -moz-scrollbars-none;
@@ -112,7 +115,7 @@ main {
 main::-webkit-scrollbar { width: 0 !important  }
 /* Base End */
 
-/* Counter */
+/* Counter Start */
 counter {
     width: 100%;
     height: 100%;
@@ -202,8 +205,9 @@ counter #editToggleLabel {
     margin-bottom: 1vw;
 }
 counter #editToggle {
-    position: absolute;
-    z-index: -1;
+    position: fixed;
+    top: 10%;
+    z-index: -2;
 }
 counter #editToggle:checked ~ counter_edit,
 counter #editToggle:checked ~ counter_title,
@@ -219,8 +223,9 @@ counter #editToggle:checked ~ #editBackLabel {
     transform: translateX(100%);
 }
 counter #sideToggle {
-    position: absolute;
-    z-index: -1;
+    position: fixed;
+    top: 10%;
+    z-index: -2;
 }
 counter #sideToggleLabel {
     cursor: pointer;
@@ -228,13 +233,13 @@ counter #sideToggleLabel {
 counter_side {
     display: block;
     position: fixed;
-    top: 13vh;
+    top: 11%;
     left: 0;
     overflow-x: hidden;
     overflow-y: scroll;
     background: linear-gradient(#868686, var(--bg-gray));
     width: 0%;
-    height: 78%;
+    height: 81.9%;
     transition: .5s;
 }
 counter_side > * {
@@ -389,7 +394,7 @@ counter_edit .editInput {
 }
 /* Counter End */
 
-/* Memo */
+/* Memo Start */
 memo {
     width: 100%;
     height: 100%;
@@ -454,7 +459,7 @@ memo_side > * {
 }
 memo #sideToggle {
     position: absolute;
-    z-index: -1;
+    z-index: -2;
 }
 memo #sideToggle:checked ~ memo_side {
     width: 100%;
@@ -522,7 +527,7 @@ memo #sideToggleLabel {
         height: 100%;
     }
     
-    /* Counter */
+    /* Counter Start >780 */
     counter {
         width: 100%;
         grid-template-columns: 30% 70% 30%;
@@ -655,7 +660,7 @@ memo #sideToggleLabel {
     }
     /* Counter End */
 
-    /* Memo */
+    /* Memo Start >780 */
     memo #pngMemo {
         display: inline;
     }
