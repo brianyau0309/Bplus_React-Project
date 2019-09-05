@@ -8,7 +8,7 @@ import Footer from './Footer.jsx'
 
 import Memo from './Memo/Memo.jsx'
 import Notification from './Notification.jsx'
-import Calendar from './Calendar.jsx'
+import Calendar from './Calendar/Calendar.jsx'
 import Counter from './Counter.jsx'
 
 export default class Page extends React.Component {

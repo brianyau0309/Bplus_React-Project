@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#E0E0E0">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#E0E0E0">
         <title>Bplus</title>
         <link rel="stylesheet" type="text/css" href="/css/index.css">
+        <link rel="manifest" href="/manifest.json">
+        <link rel="icon" sizes="192x192" href="/img/icons/icon-192x192-t.png">
+        <link rel="apple-touch-icon" href="/img/icons/icon-192x192.png">
+        <link rel="shortcut icon" type="image/x-icon" href="/img/icons/icon-192x192-t.png" />
     </head>
     <body>
         <div id='content'></div>
     </body>
+    <script src="/serviceworker.js"></script>
     <script src="/bundle.js"></script>
 </html>
