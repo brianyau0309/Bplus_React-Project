@@ -1,11 +1,11 @@
 {
   "name": "Bplus",
   "short_name": "Bplus",
-  "theme_color": "#E0E0E0",
-  "background_color": "#E0E0E0",
+  "theme_color": "#E6E6E6",
+  "background_color": "#E6E6E6",
   "display": "standalone",
   "Scope": "/",
-  "start_url": "/counter?utm_source=homescreen&utm_medium=shortcut",
+  "start_url": "/counter",
   "icons": [
     {
       "src": "/img/icons/icon-512x512.png",
@@ -47,6 +47,5 @@
       "type": "image/png",
       "sizes": "72x72"
     }
-  ],
-  "splash_pages": null                  
+  ]
 }
