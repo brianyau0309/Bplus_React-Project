@@ -1,7 +1,7 @@
 # Project B Plus  
 For practice my skill on web developing  
   
-| Name   | Verstion |  
-|--------|----------|  
-| Nodejs | v12.6.0  |  
-| npm    | v6.9.0   |  
+| Name   | Version  |
+|--------|----------|
+| Nodejs | v12.6.0  |
+| npm    | v6.9.0   |
