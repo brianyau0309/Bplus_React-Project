@@ -22,10 +22,17 @@
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register('./serviceworker.js')
-            .then(function(registration) {console.log(service worker install complete)}
+            .register('/serviceworker.js')
+            .then(function(registration) {console.log('service worker install complete')}
         );
       }
+      Notification.requestPermission().then(function(permission) {
+          if (permission === "granted") {
+              navigator.serviceWorker.ready.then(function(registration) {
+                  registration.showNotification("Send You Message!")
+              });
+          }
+      });
     </script>
     <script src="/bundle.js"></script>
 </html>

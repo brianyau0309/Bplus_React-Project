@@ -114,6 +114,9 @@ app.delete('/api/counter/:id', (req, res) => {
 })
 
 // Default
+app.get('/serviceworker.js', (req, res) => {
+  res.sendFile(path.resolve('static/serviceworker.js'))
+});
 app.get('*', (req, res) => {
    res.sendFile(path.resolve('static/index.html'));
 })
